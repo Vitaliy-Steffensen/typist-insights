@@ -1,0 +1,14 @@
+.typing-input {
+  width: 550px;
+  font-size: 2rem;
+  color: var(--primary-color);
+  border-radius: 22px;
+  display: block;
+  margin: auto;
+  padding: 12px 20px;
+  font-family: "Segoe UI";
+}
+
+.typing-input:focus {
+  outline: 2px solid var(--accent-color);
+}

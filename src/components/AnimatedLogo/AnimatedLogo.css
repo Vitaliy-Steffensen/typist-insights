@@ -1,0 +1,6 @@
+.animated-logo {
+  color: var(--accent-color);
+  font-family: "SF Mono";
+  font-size: 3rem;
+  margin: 15px;
+}

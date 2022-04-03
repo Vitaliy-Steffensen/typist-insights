@@ -1,0 +1,88 @@
+.keyboard-accuracy {
+  margin: auto;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.keyboard-accuracy__range {
+  width: 40px;
+  background: linear-gradient(hsl(105, 100%, 50%), hsl(0, 100%, 50%));
+}
+.keyboard-accuracy__range-text {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  color: var(--complimentary-color);
+  font-size: 1rem;
+}
+
+.keyboard-base {
+  max-width: 1085px;
+  padding: 20px;
+
+  background-color: #151c22;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(30, 30px);
+  grid-template-rows: repeat(5, 60px);
+  grid-gap: 5px;
+}
+
+.key {
+  color: #c9d1d9;
+  background-color: #21262d;
+  border: 2px solid #363b42;
+  border-radius: 5px;
+  grid-column: span 2;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 17px;
+}
+
+.key:hover {
+  border: 1px solid #eeeeee;
+}
+
+.delete {
+  grid-column: span 4;
+}
+
+.tab {
+  grid-column: span 3;
+}
+
+.backslash {
+  grid-column: span 3;
+}
+
+.capslock {
+  grid-column: span 4;
+}
+
+.return {
+  grid-column: span 4;
+}
+
+.leftshift {
+  grid-column: span 5;
+}
+
+.rightshift {
+  grid-column: span 5;
+}
+
+.leftctrl {
+  grid-column: span 3;
+}
+
+.command {
+  grid-column: span 3;
+  font-size: 14px;
+}
+
+.space {
+  grid-column: span 13;
+}

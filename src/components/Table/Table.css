@@ -1,0 +1,48 @@
+table {
+  width: 80%;
+  margin: auto;
+  background-color: #21262d;
+  border-radius: 10px;
+  table-layout: fixed;
+}
+
+.table-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+thead th {
+  background-color: #151c22;
+  color: #58a6ff;
+  text-align: center;
+  padding: 25px;
+  font-family: Helvetica;
+  cursor: pointer;
+}
+
+tbody td {
+  color: #c9d1d9;
+  text-align: center;
+  padding: 25px;
+  font-family: Helvetica;
+  max-width: 40px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #21262d;
+}
+
+.sorting-column {
+  background-color: yellow;
+}
+
+.filters-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+tbody {
+  max-height: 100px;
+  overflow-y: scroll;
+}

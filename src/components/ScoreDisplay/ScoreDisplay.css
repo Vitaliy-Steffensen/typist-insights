@@ -1,0 +1,27 @@
+.score-display {
+  display: block;
+}
+
+.score-display__title {
+  color: #707070;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+.score-display__score {
+  margin-top: 0px;
+  color: #5f2ef5;
+  font-size: 4.5rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+.score-display__title--small {
+  font-size: 1.3rem;
+}
+
+.score-display__score--small {
+  font-size: 2.4rem;
+}

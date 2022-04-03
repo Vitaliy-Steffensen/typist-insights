@@ -1,0 +1,42 @@
+.type-text-display {
+  color: white;
+  overflow: hidden;
+
+  height: 6.5rem;
+  margin: 90px 0;
+  font-family: "Segoe UI";
+}
+
+.type-text-display__line {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 0;
+  font-size: 2.25rem;
+  line-height: 3rem;
+}
+
+.type-text-display__text {
+  color: white;
+  margin: 0 2px;
+}
+
+.type-text-display__text--current {
+  padding: 0px 3px 5px;
+  background: var(--primary-color-300);
+  border-radius: 5px;
+}
+
+.type-text-display__text--current-typo {
+  background: red;
+}
+
+.type-text-display__text--typo {
+  color: red;
+}
+
+.type-text-display__text--correct {
+  color: green;
+}
