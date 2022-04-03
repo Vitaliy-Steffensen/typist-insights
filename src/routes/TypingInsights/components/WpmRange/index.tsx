@@ -24,7 +24,7 @@ const WpmRange: React.FC<indexProps> = ({ wpm }) => {
             backgroundSize: `${(wpm / 216) * 100}% 100%`,
             zIndex: wpm >= AVARAGE_WPM ? 1 : 20,
           }}
-          value={wpm}
+          defaultValue={wpm}
           min="0"
           max="216"
         />

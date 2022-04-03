@@ -47,3 +47,16 @@
   gap: 200px;
   margin-bottom: 100px;
 }
+
+.typing-insights__restart {
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  color: #5f2ef5;
+  cursor: pointer;
+  font-size: 4rem;
+}
+
+.typing-insights__restart:hover {
+  color: #6e3dff;
+}

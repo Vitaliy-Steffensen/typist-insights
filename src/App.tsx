@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import {
-  GameManagerType,
-  useGameDataContext,
-} from "./contexts/GameDataContext";
+import React from "react";
+import { useGameDataContext } from "./contexts/GameDataContext";
 import TypingPage from "./routes/TypingPage";
 import LandingPage from "./routes/LandingPage";
 import { TypingInsights } from "./routes/TypingInsights";
 
 function App() {
   const { gameState } = useGameDataContext();
-  const gameManager: GameManagerType = useGameDataContext();
 
   const content = () => {
     switch (gameState) {
@@ -24,7 +20,6 @@ function App() {
     }
   };
 
-  return <div className="App">{content()}</div>;
+  return <>{content()}</>;
 }
-
 export default App;

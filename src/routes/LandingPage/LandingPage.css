@@ -28,7 +28,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 2rem;
+  font-size: 2.25rem;
+
   overflow: hidden;
   text-align: justify;
   width: 1000px;

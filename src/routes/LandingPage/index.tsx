@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { useGameDataContext } from "../../contexts/GameDataContext";
 import { FaMousePointer } from "react-icons/fa";
 import "./LandingPage.css";
-import { AnimatedLogo } from "../../components/AnimatedLogo";
+import AnimatedLogo from "../../components/AnimatedLogo";
+import { BACKGROUND_TEXT } from "./backgroundText";
+import { useGameDataContext } from "../../contexts/GameDataContext";
 
 interface LandingPageProps {}
 
 const LandingPage: React.FC<LandingPageProps> = ({}) => {
-  const { text, startGame } = useGameDataContext();
-
+  const { startGame } = useGameDataContext();
   useEffect(() => {
     document.addEventListener("keyup", startGame);
 
@@ -26,9 +26,7 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
           &nbsp; Click or press any key to start
         </p>
       </div>
-      <p className="typing-insights__typing-text">
-        {text.map((word: any) => `${word.syntax} `)}
-      </p>
+      <p className="typing-insights__typing-text">{BACKGROUND_TEXT}</p>
     </div>
   );
 };

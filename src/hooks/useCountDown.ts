@@ -1,26 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useIsMounted } from "./useIsMounted";
 
-export const useCountDown = (seconds = 8) => {
+export const useCountDown = (seconds = 59) => {
   const [timeLeft, setTimeLeft] = useState<number>(seconds);
-  const [interval, setLocalInterval] = useState<any>(null);
+  const isMounted = useIsMounted();
+
+  let interval: any = null;
+  let intervalCounter = seconds;
+  let callback: () => void;
 
   const startCountDown = () => {
     setTimeLeft(seconds);
-    setLocalInterval(setInterval(countTime, 1000));
+    interval = setInterval(countTime, 1000);
   };
 
   function countTime() {
-    if (timeLeft >= 0) return setTimeLeft((prevState) => prevState - 1);
+    if (intervalCounter > 0) {
+      intervalCounter--;
+      return isMounted && setTimeLeft((prevState) => prevState - 1);
+    }
+
     clearInterval(interval);
+
+    callback();
+    callback = () => null;
   }
 
-  // useEffect(() => {
-  //   if (timeLeft >= 0) return;
-  //   clearInterval(interval);
-  // }, [timeLeft]);
+  const onTimerEnds = (callBackFunction: () => void) => {
+    callback = callBackFunction;
+  };
 
   return {
     startCountDown,
     timeLeft,
+    onTimerEnds,
   };
 };

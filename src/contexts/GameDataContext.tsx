@@ -8,7 +8,7 @@ import React, {
 import { ACTIONS } from "../actions/gameStatsActions";
 import gameStatsReducer from "../reducers/gameStatsReducer";
 
-export const GameDataContext = React.createContext<any | null>(null);
+export const GameDataContext = createContext<any>(null);
 
 type GameState = "readyToPlay" | "initiated" | "completed";
 export type GameManagerType = {
@@ -26,6 +26,7 @@ export type GameManagerType = {
   setTypoInCurrentWord: any;
   setGameState: any;
   addCharactor: any;
+  restart: any;
 };
 
 interface GameStatsType {
@@ -50,6 +51,14 @@ export const GameDataProvider = ({ children }: any) => {
 
   const startGame = () => {
     setGameState("initiated");
+  };
+
+  const restart = () => {
+    setGameState("readyToPlay");
+    dispatch({
+      type: ACTIONS.RESET,
+      payload: {},
+    });
   };
 
   useEffect(() => {
@@ -110,8 +119,6 @@ export const GameDataProvider = ({ children }: any) => {
   };
 
   const addCharactor = (charactor: string, typo: boolean = false) => {
-    if (typo) console.log("____________charactor ", charactor, " typo", typo);
-
     charactor &&
       dispatch({
         type: ACTIONS.ADD_CHARACTOR,
@@ -125,12 +132,6 @@ export const GameDataProvider = ({ children }: any) => {
           currentCharIndex: prev.currentCharIndex + 1,
         };
       });
-
-    // setText((prev: any) =>
-    //   prev.map((word: any, i: number) =>
-    //     i !== currentWordIndex ? word : { ...word, correct: typo }
-    //   )
-    // );
   };
 
   useEffect(() => {
@@ -148,6 +149,7 @@ export const GameDataProvider = ({ children }: any) => {
     setGameState,
     addCharactor,
     setCurrentWord,
+    restart,
   };
 
   return (

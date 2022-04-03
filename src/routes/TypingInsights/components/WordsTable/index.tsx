@@ -50,10 +50,8 @@ export const WordsTable: React.FC<indexProps> = ({}) => {
         ...addTypos(gameStats.wrongWords, true),
         ...addTypos(gameStats.correctWords, false),
       ]);
-      console.log("1");
       return;
     }
-    console.log("2");
 
     setSorting(column);
     setSortedWords(() =>

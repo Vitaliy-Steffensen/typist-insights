@@ -6,11 +6,12 @@ import { WordsTable } from "./components/WordsTable";
 import WpmRange from "./components/WpmRange";
 import InsightFormat from "./insightFormat";
 import "./TypingInsights.css";
+import { VscDebugRestart } from "react-icons/vsc";
 
 interface indexProps {}
 
 export const TypingInsights: React.FC<indexProps> = ({}) => {
-  const { gameStats } = useGameDataContext();
+  const { gameStats, restart } = useGameDataContext();
   const wpm = gameStats.correctWords.length;
   const wordAccuracy =
     (gameStats.correctWords.length /
@@ -25,27 +26,10 @@ export const TypingInsights: React.FC<indexProps> = ({}) => {
     totalChars,
   } = InsightFormat.charactorAccuracy(gameStats.charactors);
 
-  //if no data print "no data" and redirect 3 sec after, in useEffect
-
-  // const test = (
-  //   <>
-  //     <div>
-  //       Correct:{` (${gameStats.correctWords.length})`}
-  //       {gameStats.correctWords.map((word: any, i: number) => (
-  //         <div key={i}>{word?.syntax}</div>
-  //       ))}
-  //     </div>
-  //     <div>
-  //       Wrong:{` (${gameStats.wrongWords.length})`}
-  //       {gameStats.wrongWords.map((word: any, i: number) => (
-  //         <div key={i}>{word.syntax}</div>
-  //       ))}
-  //     </div>
-  //   </>
-  // );
-
   return (
     <div className="typing-insights">
+      <VscDebugRestart className="typing-insights__restart" onClick={restart} />
+
       <div className="typing-insights__sidebar">
         <div className="typing-insights__sidebar-content">
           <ScoreDiplay title="wpm" score={wpm} />

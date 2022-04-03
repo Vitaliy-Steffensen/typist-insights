@@ -16,18 +16,20 @@ const reducer = (
 ) => {
   switch (action.type) {
     case ACTIONS.ADD_CORRECT:
-      console.log("reducer ", action.payload);
       return {
         ...state,
         correctWords: [...state.correctWords, action.payload],
       };
 
     case ACTIONS.ADD_WRONG:
-      console.log("reducer ", action.payload, " wrong");
       return { ...state, wrongWords: [...state.wrongWords, action.payload] };
+    case ACTIONS.RESET:
+      return {
+        correctWords: [],
+        wrongWords: [],
+        charactors: {},
+      };
     case ACTIONS.ADD_CHARACTOR:
-      console.log("add char reducer ", action.payload);
-
       return {
         ...state,
         charactors: {

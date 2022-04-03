@@ -59,7 +59,6 @@ export default class InsightFormat {
 
   static percentageToColor(floatPercentage: number, maxHue = 105, minHue = 0) {
     const hue = floatPercentage * (maxHue - minHue) + minHue;
-    console.log("percentage ", floatPercentage, " hsl ", hue);
     return `hsl(${hue}, 91%, 57%)`;
   }
 

@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useIsMounted } from "../../hooks/useIsMounted";
 import "./AnimatedLogo.css";
 
-interface indexProps {}
-
-export const AnimatedLogo: React.FC<indexProps> = ({}) => {
-  const [indicatorInterval, setIndicatorInterval] = useState<any>();
+const AnimatedLogo: React.FC<unknown> = () => {
   const [isLogoIndicatorVisible, setIsLogoIndicatorVisible] =
     useState<boolean>(false);
+  let interval: any;
 
   useEffect(() => {
-    setIndicatorInterval(
-      setInterval(() => setIsLogoIndicatorVisible((prev) => !prev), 500)
+    interval = setInterval(
+      () => setIsLogoIndicatorVisible((prev) => !prev),
+      500
     );
+
     return () => {
-      clearInterval(indicatorInterval);
+      clearInterval(interval);
     };
   }, []);
 
@@ -23,3 +24,4 @@ export const AnimatedLogo: React.FC<indexProps> = ({}) => {
     </h1>
   );
 };
+export default AnimatedLogo;

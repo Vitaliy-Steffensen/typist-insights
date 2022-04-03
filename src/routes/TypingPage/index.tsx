@@ -1,34 +1,21 @@
-import React, {
-  MouseEvent,
-  MouseEventHandler,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import TypeTextDisplay from "../../components/TypeTextDisplay";
-import { TypingInput } from "../../components/TypingSection";
-import {
-  GameManagerType,
-  useGameDataContext,
-} from "../../contexts/GameDataContext";
+import React, { useEffect } from "react";
+import TypeTextDisplay from "./components/TypeTextDisplay";
+
+import { useGameDataContext } from "../../contexts/GameDataContext";
 import { useCountDown } from "../../hooks/useCountDown";
 import "./TypingPage.css";
 import { memo } from "react";
+import TypingInput from "./components/TypingInput";
 
-interface TypingPageProps {}
+const TypingPage: React.FC<unknown> = () => {
+  const { startCountDown, timeLeft, onTimerEnds } = useCountDown();
+  const { setGameState } = useGameDataContext();
 
-const TypingPage: React.FC<TypingPageProps> = ({}) => {
-  const { startCountDown, timeLeft } = useCountDown();
-
-  const gameManager: GameManagerType = useGameDataContext();
+  onTimerEnds(() => setGameState("completed"));
 
   useEffect(() => {
     startCountDown();
   }, []);
-
-  useEffect(() => {
-    if (timeLeft < 0) gameManager.setGameState("completed");
-  }, [timeLeft]);
 
   return (
     <div className="typing-page">
