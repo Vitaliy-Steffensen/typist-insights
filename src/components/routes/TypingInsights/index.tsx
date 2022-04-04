@@ -80,6 +80,8 @@ export const TypingInsights: React.FC<indexProps> = ({}) => {
             <ScoreDiplay title="total charactors" score={totalChars} small />
           </div>
           <p className="score-display__title">key accuracy</p>
+          <br />
+          <br />
           <KeyboardAccuracyInsights charactors={charsWithAccuracy} />
         </div>
         <h1 className="typing-insights__title">words encountered</h1>

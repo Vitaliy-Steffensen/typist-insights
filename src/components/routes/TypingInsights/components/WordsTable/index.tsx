@@ -66,6 +66,13 @@ export const WordsTable: React.FC<indexProps> = ({}) => {
   };
 
   return (
-    <Table headers={headers} data={sortedWords} sorting={sorting} sort={sort} />
+    <div style={{ marginBottom: 100 }}>
+      <Table
+        headers={headers}
+        data={sortedWords}
+        sorting={sorting}
+        sort={sort}
+      />
+    </div>
   );
 };

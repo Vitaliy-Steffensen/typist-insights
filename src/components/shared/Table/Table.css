@@ -1,8 +1,27 @@
-table {
+.table {
+  border-radius: 10px;
+  display: block;
+  overflow: auto;
   width: 80%;
   margin: auto;
+  scrollbar-color: yellow blue;
+}
+
+.table::-webkit-scrollbar {
+  width: 12px;
+}
+.table::-webkit-scrollbar-track {
+  background: #151c22; /* color of the tracking area */
+}
+.table::-webkit-scrollbar-thumb {
+  background-color: #58a6ff;
+  border-radius: 20px;
+  border: 3px solid #21262d;
+}
+
+table {
+  width: 100%;
   background-color: #21262d;
-  border-radius: 10px;
   table-layout: fixed;
 }
 
@@ -19,6 +38,8 @@ thead th {
   padding: 25px;
   font-family: Helvetica;
   cursor: pointer;
+  position: sticky;
+  top: 0;
 }
 
 tbody td {
@@ -32,17 +53,8 @@ tbody td {
   background-color: #21262d;
 }
 
-.sorting-column {
-  background-color: yellow;
-}
-
 .filters-container {
   margin-top: 25px;
   display: flex;
   justify-content: center;
-}
-
-tbody {
-  max-height: 100px;
-  overflow-y: scroll;
 }

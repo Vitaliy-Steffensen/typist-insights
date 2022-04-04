@@ -3,4 +3,5 @@ export interface TableProps {
   data: { [key: string]: string | number }[];
   sorting: any;
   sort: any;
+  height?: number;
 }

@@ -9,7 +9,7 @@ export const getLinesData: (
   currentWord: CurrentWordType,
   text: textType
 ) => LinesDataType = (currentWord: CurrentWordType, text: textType) => {
-  const MAX_CHAR_IN_LINE = 65;
+  const MAX_CHAR_IN_LINE = 63;
 
   let lines: LineType[] = [];
   let currentWordIndex = 0;
