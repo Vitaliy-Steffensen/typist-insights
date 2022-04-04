@@ -1,14 +1,8 @@
 import React from "react";
 import "./Table.css";
+import { TableProps } from "./types";
 
-interface indexProps {
-  headers: string[];
-  data: { [key: string]: string | number }[];
-  sorting: any;
-  sort: any;
-}
-
-export const Table: React.FC<indexProps> = ({
+export const Table: React.FC<TableProps> = ({
   headers,
   data,
   sorting,

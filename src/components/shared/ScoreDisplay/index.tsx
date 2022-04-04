@@ -1,14 +1,6 @@
 import React from "react";
 import "./ScoreDisplay.css";
-
-interface ScoreDiplayProps {
-  title: string;
-  score: string | number;
-  style?: {
-    color?: string;
-  };
-  small?: boolean;
-}
+import { ScoreDiplayProps } from "./types";
 
 export const ScoreDiplay: React.FC<ScoreDiplayProps> = ({
   title,

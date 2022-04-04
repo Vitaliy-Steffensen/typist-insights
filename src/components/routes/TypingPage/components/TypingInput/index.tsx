@@ -4,9 +4,7 @@ import { GameManagerType } from "../../../../../context/contexts/GameDataContext
 
 import "./TypingInput.css";
 
-interface indexProps {}
-
-const TypingInput: React.FC<indexProps> = ({}) => {
+const TypingInput: React.FC = () => {
   const gameManager: GameManagerType = useGameDataContext();
   const { currentWord, setCurrentWord } = useGameDataContext();
   const [input, setInput] = useState<string>("");
@@ -24,8 +22,6 @@ const TypingInput: React.FC<indexProps> = ({}) => {
     const currentLetter = currentWord.syntax.charAt(
       currentWord.currentCharIndex
     );
-
-    const latestChar = value.length > 0 ? value.charAt(value.length - 1) : "";
 
     if (e.nativeEvent.inputType === "deleteContentBackward") {
       if (value.length - 1 < currentWord.currentCharIndex) {

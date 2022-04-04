@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useIsMounted } from "./useIsMounted";
 
-export const useCountDown = (seconds = 10) => {
+export const useCountDown = (seconds = 1000) => {
   const [timeLeft, setTimeLeft] = useState<number>(seconds);
   const isMounted = useIsMounted();
 

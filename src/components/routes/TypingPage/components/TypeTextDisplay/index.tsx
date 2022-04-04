@@ -1,67 +1,51 @@
-import React, { useMemo, memo, useEffect } from "react";
-import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
-import Testds from "./Testds";
+import React, { useMemo, memo } from "react";
+import { wordType } from "../../../../../context/contexts/GameDataContext/types";
+import { getLinesData } from "./formatLine";
+import { LineType, TypeTextDisplayProps } from "./types";
 import "./TypeTextDisplay.css";
 
-const TypeTextDisplay: React.FC = () => {
-  const { currentWord, text } = useGameDataContext();
-
-  const getLines = (currentWord: any, text: any) => {
-    let result = { lines: [], currentWordLineIndex: 0, currentWordIndex: 0 };
-
-    const MAX_CHAR_IN_LINE = 65;
-    let currentLineCharLength = 0;
-    let currentLine = 0;
-
-    let allLines: any = [];
-    let currentLineWords: any = [];
-
-    let savedWord: any = null;
-
-    text.forEach((word: any, i: number) => {
-      currentLineCharLength += word.syntax.length + 1;
-
-      savedWord && currentLineWords.push(savedWord);
-
-      if (currentLineCharLength > MAX_CHAR_IN_LINE) {
-        currentLineCharLength = word.syntax.length + 1;
-        currentLine++;
-        allLines.push(currentLineWords);
-        currentLineWords = [];
-        savedWord = word;
-      } else {
-        currentLineWords.push(word);
-        savedWord = 0;
-      }
-
-      if (i === currentWord.index) {
-        allLines = [];
-        result = {
-          ...result,
-          currentWordIndex:
-            currentLineWords.length > 0 ? currentLineWords.length - 1 : 0,
-        };
-      }
-    });
-
-    result = { ...result, lines: allLines };
-    return result;
-  };
-
+const TypeTextDisplay: React.FC<TypeTextDisplayProps> = ({
+  currentWord,
+  text,
+}) => {
   const memoizedLines = useMemo(
-    () => getLines(currentWord, text),
+    () => getLinesData(currentWord, text),
     [currentWord, text]
   );
+  console.log("memoizedLines ", memoizedLines);
+  const wordClasses = (word: wordType, iscurrentWord: boolean) => {
+    return iscurrentWord
+      ? `type-text-display__text type-text-display__text--current ${
+          currentWord.typo ? "type-text-display__text--current-typo" : ""
+        }`
+      : `type-text-display__text ${
+          word?.typo === true
+            ? "type-text-display__text--typo"
+            : word?.typo === false
+            ? "type-text-display__text--correct "
+            : ""
+        }`;
+  };
 
-  useEffect(() => {
-    console.log("currentWord", currentWord);
-  }, [currentWord]);
-  useEffect(() => {
-    console.log("text", text);
-  }, [text]);
-
-  //Prøv med at lave en momized version af lines og så bruge den i renderingen
-  return <Testds memoizedLines={memoizedLines} currentWord={currentWord} />;
+  return (
+    <div className="type-text-display">
+      {memoizedLines.lines.map((line: LineType, lineIndex: number) => (
+        <div className="type-text-display__line" key={lineIndex}>
+          {line.map((word: wordType, i: number) => {
+            let iscurrentWord =
+              lineIndex === 0 && i === memoizedLines.currentWordIndex;
+            return (
+              <React.Fragment key={i}>
+                <span className={wordClasses(word, iscurrentWord)}>
+                  {word.syntax}
+                </span>{" "}
+              </React.Fragment>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default memo(TypeTextDisplay);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AnimatedLogo.css";
 
-const AnimatedLogo: React.FC<unknown> = () => {
+const AnimatedLogo: React.FC = () => {
   const [isLogoIndicatorVisible, setIsLogoIndicatorVisible] =
     useState<boolean>(false);
   let interval: any;
