@@ -1,12 +1,15 @@
 import React, { useState, memo } from "react";
 import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
-import { GameManagerType } from "../../../../../context/contexts/GameDataContext/types";
+import {
+  CurrentWordType,
+  GameManagerType,
+} from "../../../../../context/contexts/GameDataContext/types";
 
 import "./TypingInput.css";
 
 const TypingInput: React.FC = () => {
   const gameManager: GameManagerType = useGameDataContext();
-  const { currentWord, setCurrentWord } = useGameDataContext();
+  const { currentWord, removeCharInCurrentWord } = useGameDataContext();
   const [input, setInput] = useState<string>("");
 
   const inputChanged = (e: any) => {
@@ -14,44 +17,30 @@ const TypingInput: React.FC = () => {
 
     if (e.nativeEvent.data === " ") {
       gameManager.submitInput(value);
-      setInput("");
+      return setInput("");
+    }
 
-      return;
+    if (e.nativeEvent.inputType === "deleteContentBackward") {
+      value.length - 1 < currentWord.currentCharIndex &&
+        removeCharInCurrentWord(value);
+      return setInput(value);
     }
 
     const currentLetter = currentWord.syntax.charAt(
       currentWord.currentCharIndex
     );
+    const hasTypo = !currentWord.syntax.includes(value);
 
-    if (e.nativeEvent.inputType === "deleteContentBackward") {
-      if (value.length - 1 < currentWord.currentCharIndex) {
-        setCurrentWord((prev: any) => {
-          return {
-            ...prev,
-            currentCharIndex: value.length > 0 ? value.length - 1 : 0,
-          };
-        });
-      }
-      return setInput(value);
-    }
-
-    if (!currentWord.syntax.includes(value)) {
-      //add wrong letter
-      //higlight wrong
-      currentWord.typo !== true && gameManager.setTypoInCurrentWord(true);
-
-      gameManager.addCharactor(currentLetter, true);
-    } else {
-      currentWord.typo !== false && gameManager.setTypoInCurrentWord(false);
-      gameManager.addCharactor(e.nativeEvent.data);
-
-      //correct word
-    }
+    updateTypoInCurrentWord(hasTypo);
+    gameManager.addCharactor(currentLetter, hasTypo);
 
     if (e.nativeEvent.data !== " ") return setInput(value);
     gameManager.submitInput(value);
     setInput("");
   };
+
+  const updateTypoInCurrentWord = (typo: boolean) =>
+    currentWord.typo !== typo && gameManager.setTypoInCurrentWord(typo);
 
   return (
     <input

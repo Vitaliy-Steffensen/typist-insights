@@ -118,6 +118,16 @@ export const GameDataProvider = ({ children }: any) => {
       });
   };
 
+  const removeCharInCurrentWord = (value: string) => {
+    setCurrentWord((prev: CurrentWordType) => {
+      return {
+        ...prev,
+        typo: !currentWord.syntax.includes(value),
+        currentCharIndex: value.length > 0 ? value.length - 1 : 0,
+      };
+    });
+  };
+
   const value: GameManagerType = {
     gameState,
     startGame,
@@ -129,7 +139,7 @@ export const GameDataProvider = ({ children }: any) => {
     setGameState,
     addCharactor,
     restart,
-    setCurrentWord,
+    removeCharInCurrentWord,
   };
 
   return (

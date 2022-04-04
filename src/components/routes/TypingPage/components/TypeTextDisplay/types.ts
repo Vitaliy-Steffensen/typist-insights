@@ -11,8 +11,7 @@ export interface TypeTextDisplayProps {
 
 export type LineType = wordType[];
 
-export type LiensData = {
+export type LinesDataType = {
   lines: LineType[];
-  currentWordLineIndex: number;
   currentWordIndex: number;
 };

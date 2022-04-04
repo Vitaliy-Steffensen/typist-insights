@@ -32,7 +32,6 @@ it("App can switch between renderGameStates correctly", async () => {
   // const insightsPage = await waitFor(() =>
   //   screen.findByText("words per minute")
   // );
-  // console.log(prettyDom(container));
 
   // expect(insightsPage).toBeInTheDocument();
 });

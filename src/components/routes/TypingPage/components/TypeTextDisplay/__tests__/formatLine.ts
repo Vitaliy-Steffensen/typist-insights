@@ -32,7 +32,6 @@ test("getTestTitle at 200", () => {
   expect(getLinesData(currentWord, text)).toEqual(
     expect.objectContaining({
       currentWordIndex: expect.any(Number),
-      currentWordLineIndex: expect.any(Number),
       lines: expect.arrayContaining([
         expect.arrayContaining([
           expect.objectContaining({

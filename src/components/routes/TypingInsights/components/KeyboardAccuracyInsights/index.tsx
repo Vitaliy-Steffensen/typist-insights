@@ -10,13 +10,10 @@ const KeyboardAccuracyInsights: React.FC<indexProps> = ({ charactors }) => {
   const getBackgroundColor = (content: string) => {
     if (!charactors[content]) return {};
     const char = charactors[content];
-    // console.log("char ", char);
 
     const accuracy = charactors[content].accuracy;
 
     const accuracyTopInterval = InsightFormat.topFragmentPercentage(accuracy);
-    // console.log("accuracy ", charactors[content].accuracy);
-    // console.log("accuracyTopInterval ", accuracyTopInterval);
     return {
       backgroundColor: InsightFormat.percentageToColor(accuracyTopInterval),
       color: "#000",

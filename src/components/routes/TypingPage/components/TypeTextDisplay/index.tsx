@@ -12,7 +12,7 @@ const TypeTextDisplay: React.FC<TypeTextDisplayProps> = ({
     () => getLinesData(currentWord, text),
     [currentWord, text]
   );
-  console.log("memoizedLines ", memoizedLines);
+
   const wordClasses = (word: wordType, iscurrentWord: boolean) => {
     return iscurrentWord
       ? `type-text-display__text type-text-display__text--current ${
@@ -38,7 +38,8 @@ const TypeTextDisplay: React.FC<TypeTextDisplayProps> = ({
               <React.Fragment key={i}>
                 <span className={wordClasses(word, iscurrentWord)}>
                   {word.syntax}
-                </span>{" "}
+                </span>
+                &nbsp;
               </React.Fragment>
             );
           })}

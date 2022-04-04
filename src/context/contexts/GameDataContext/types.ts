@@ -11,7 +11,7 @@ export interface GameManagerType {
   setGameState: any;
   addCharactor: (charactor: string, typo?: boolean) => void;
   restart: () => void;
-  setCurrentWord: React.Dispatch<React.SetStateAction<CurrentWordType>>;
+  removeCharInCurrentWord: (value: string) => void;
 }
 
 export interface CurrentWordType {

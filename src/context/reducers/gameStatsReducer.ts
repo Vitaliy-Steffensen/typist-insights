@@ -53,8 +53,6 @@ const getCharactorValue = (
   charactor: string,
   typo: boolean
 ) => {
-  console.log("typo", typo);
-
   const isAlocated = prevCharactors[charactor];
 
   if (!isAlocated) return { correct: typo ? 0 : 1, wrong: typo ? 1 : 0 };
