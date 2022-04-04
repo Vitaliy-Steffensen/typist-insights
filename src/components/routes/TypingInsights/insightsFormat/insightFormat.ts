@@ -45,9 +45,9 @@ export default class InsightFormat {
     switch (true) {
       case wpm < 35:
         return "Below average";
-      case 35 <= wpm && wpm > 50:
+      case 35 <= wpm && wpm < 50:
         return "You are an average typist";
-      case 50 <= wpm && wpm > 100:
+      case 50 <= wpm && wpm < 100:
         return "Abobe average!";
       case 100 <= wpm:
         return `You are only ${216 - wpm} wpm awey from the world record!`;

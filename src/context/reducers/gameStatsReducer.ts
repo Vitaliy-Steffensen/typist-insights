@@ -1,6 +1,6 @@
-import { ACTIONS } from "../actions/gameStatsActions";
-
 //string | { charactor: string; typo: boolean }
+
+import { ACTIONS } from "../actions/gameStatsActions";
 
 const reducer = (
   state: any,

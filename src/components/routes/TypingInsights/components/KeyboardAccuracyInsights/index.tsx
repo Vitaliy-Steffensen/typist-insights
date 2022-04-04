@@ -1,5 +1,5 @@
 import React from "react";
-import InsightFormat from "../../insightFormat";
+import InsightFormat from "../../insightsFormat/insightFormat";
 import "./KeybordAccuracy.css";
 
 interface indexProps {

@@ -1,8 +1,8 @@
 import React from "react";
-import { useGameDataContext } from "./contexts/GameDataContext";
-import TypingPage from "./routes/TypingPage";
-import LandingPage from "./routes/LandingPage";
-import { TypingInsights } from "./routes/TypingInsights";
+import { useGameDataContext } from "./context/contexts/GameDataContext/GameDataContext";
+import TypingPage from "./components/routes/TypingPage";
+import LandingPage from "./components/routes/LandingPage";
+import { TypingInsights } from "./components/routes/TypingInsights";
 
 function App() {
   const { gameState } = useGameDataContext();

@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { FaMousePointer } from "react-icons/fa";
 import "./LandingPage.css";
-import { useGameDataContext } from "../../context/contexts/GameDataContext/GameDataContext";
-import AnimatedLogo from "../../components/shared/AnimatedLogo";
-import { BACKGROUND_TEXT } from "../../components/routes/LandingPage/backgroundText";
+import { BACKGROUND_TEXT } from "./backgroundText";
+import { useGameDataContext } from "../../../context/contexts/GameDataContext/GameDataContext";
+import AnimatedLogo from "../../shared/AnimatedLogo";
 
-const LandingPage: React.FC = () => {
+interface LandingPageProps {}
+
+const LandingPage: React.FC<LandingPageProps> = ({}) => {
   const { startGame } = useGameDataContext();
-
   useEffect(() => {
     document.addEventListener("keyup", startGame);
 
     return () => {
       document.removeEventListener("keyup", startGame);
     };
-  });
+  }, []);
 
   return (
     <div className="typing-insights" onClick={startGame}>

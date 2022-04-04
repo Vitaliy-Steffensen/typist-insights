@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Table } from "../../../../components/Table";
-import { useGameDataContext } from "../../../../contexts/GameDataContext";
+import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
+import { Table } from "../../../../shared/Table";
 
 interface indexProps {}
 

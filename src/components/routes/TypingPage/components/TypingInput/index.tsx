@@ -1,8 +1,6 @@
 import React, { useState, memo } from "react";
-import {
-  GameManagerType,
-  useGameDataContext,
-} from "../../../../contexts/GameDataContext";
+import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
+import { GameManagerType } from "../../../../../context/contexts/GameDataContext/types";
 
 import "./TypingInput.css";
 
@@ -18,6 +16,8 @@ const TypingInput: React.FC<indexProps> = ({}) => {
 
     if (e.nativeEvent.data === " ") {
       gameManager.submitInput(value);
+      setInput("");
+
       return;
     }
 
@@ -35,9 +35,8 @@ const TypingInput: React.FC<indexProps> = ({}) => {
             currentCharIndex: value.length > 0 ? value.length - 1 : 0,
           };
         });
-
-        return setInput(value);
       }
+      return setInput(value);
     }
 
     if (!currentWord.syntax.includes(value)) {
@@ -54,7 +53,6 @@ const TypingInput: React.FC<indexProps> = ({}) => {
     }
 
     if (e.nativeEvent.data !== " ") return setInput(value);
-
     gameManager.submitInput(value);
     setInput("");
   };

@@ -1,12 +1,12 @@
 import React from "react";
-import { ScoreDiplay } from "../../components/ScoreDisplay";
-import { useGameDataContext } from "../../contexts/GameDataContext";
+import { useGameDataContext } from "../../../context/contexts/GameDataContext/GameDataContext";
 import KeyboardAccuracyInsights from "./components/KeyboardAccuracyInsights";
 import { WordsTable } from "./components/WordsTable";
 import WpmRange from "./components/WpmRange";
-import InsightFormat from "./insightFormat";
+import InsightFormat from "./insightsFormat/insightFormat";
 import "./TypingInsights.css";
 import { VscDebugRestart } from "react-icons/vsc";
+import { ScoreDiplay } from "../../shared/ScoreDisplay";
 
 interface indexProps {}
 

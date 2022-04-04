@@ -5,7 +5,7 @@ interface testProps {
   currentWord: any;
 }
 
-const Test: React.FC<testProps> = ({ memoizedLines, currentWord }) => {
+const Testds: React.FC<testProps> = ({ memoizedLines, currentWord }) => {
   console.log("rerenders");
 
   const wordClasses = (word: any, iscurrentWord: boolean) => {
@@ -14,9 +14,9 @@ const Test: React.FC<testProps> = ({ memoizedLines, currentWord }) => {
           currentWord.typo ? "type-text-display__text--current-typo" : ""
         }`
       : `type-text-display__text ${
-          word?.correct === false
+          word?.typo === true
             ? "type-text-display__text--typo"
-            : word?.correct === true
+            : word?.typo === false
             ? "type-text-display__text--correct "
             : ""
         }`;
@@ -42,4 +42,4 @@ const Test: React.FC<testProps> = ({ memoizedLines, currentWord }) => {
     </div>
   );
 };
-export default memo(Test);
+export default memo(Testds);

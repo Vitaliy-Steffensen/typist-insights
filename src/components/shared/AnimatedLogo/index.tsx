@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useIsMounted } from "../../hooks/useIsMounted";
 import "./AnimatedLogo.css";
 
 const AnimatedLogo: React.FC<unknown> = () => {

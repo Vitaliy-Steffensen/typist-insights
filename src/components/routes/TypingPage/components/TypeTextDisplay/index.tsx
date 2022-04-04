@@ -1,9 +1,9 @@
 import React, { useMemo, memo, useEffect } from "react";
-import { useGameDataContext } from "../../../../contexts/GameDataContext";
-import Test from "./test";
+import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
+import Testds from "./Testds";
 import "./TypeTextDisplay.css";
 
-const TypeTextDisplay: React.FC = ({}) => {
+const TypeTextDisplay: React.FC = () => {
   const { currentWord, text } = useGameDataContext();
 
   const getLines = (currentWord: any, text: any) => {
@@ -60,7 +60,8 @@ const TypeTextDisplay: React.FC = ({}) => {
     console.log("text", text);
   }, [text]);
 
-  return <Test memoizedLines={memoizedLines} currentWord={currentWord} />;
+  //Prøv med at lave en momized version af lines og så bruge den i renderingen
+  return <Testds memoizedLines={memoizedLines} currentWord={currentWord} />;
 };
 
 export default memo(TypeTextDisplay);
