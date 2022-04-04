@@ -1,5 +1,7 @@
 import React from "react";
 import InsightFormat from "../../insightsFormat/insightFormat";
+import { ENGLISH_KEYBOARD } from "./keyboard-layouts/english";
+import { keyboardKeyType } from "./keyboard-layouts/types";
 import "./KeybordAccuracy.css";
 
 interface indexProps {
@@ -20,7 +22,7 @@ const KeyboardAccuracyInsights: React.FC<indexProps> = ({ charactors }) => {
     };
   };
 
-  const key = (content: string, uniqueClass?: string) =>
+  const keyElement = (content: string, uniqueClass?: string) =>
     React.createElement(
       "div",
       {
@@ -33,10 +35,12 @@ const KeyboardAccuracyInsights: React.FC<indexProps> = ({ charactors }) => {
   return (
     <div className="keyboard-accuracy">
       <div className="keyboard-base">
-        {key("~")}
-        <div className="key">1</div>
-        <div className="key">2</div>
-        <div className="key">3</div>
+        {ENGLISH_KEYBOARD.map((key: keyboardKeyType, i: number) => (
+          <React.Fragment key={i}>
+            {keyElement(key.name, key.unique)}
+          </React.Fragment>
+        ))}
+
         <div className="key">4</div>
         <div className="key">5</div>
         <div className="key">6</div>
@@ -46,42 +50,42 @@ const KeyboardAccuracyInsights: React.FC<indexProps> = ({ charactors }) => {
         <div className="key">0</div>
         <div className="key">-</div>
         <div className="key">+</div>
-        {key("Delete", "delete")}
+        {keyElement("Delete", "delete")}
         <div className="key tab">Tab</div>
         <div className="key">Q</div>
         <div className="key">w</div>
-        {key("E")}
-        {key("R")}
-        {key("T")}
-        {key("Y")}
-        {key("U")}
-        {key("I")}
-        {key("O")}
-        {key("P")}
+        {keyElement("E")}
+        {keyElement("R")}
+        {keyElement("T")}
+        {keyElement("Y")}
+        {keyElement("U")}
+        {keyElement("I")}
+        {keyElement("O")}
+        {keyElement("P")}
         <div className="key">[</div>
         <div className="key">]</div>
         <div className="key backslash">\</div>
         <div className="key capslock">CapsLock</div>
-        {key("A")}
-        {key("S")}
-        {key("D")}
-        {key("F")}
-        {key("G")}
-        {key("H")}
-        {key("J")}
-        {key("K")}
-        {key("L")}
+        {keyElement("A")}
+        {keyElement("S")}
+        {keyElement("D")}
+        {keyElement("F")}
+        {keyElement("G")}
+        {keyElement("H")}
+        {keyElement("J")}
+        {keyElement("K")}
+        {keyElement("L")}
         <div className="key">;</div>
         <div className="key">'</div>
         <div className="key return">Return</div>
         <div className="key leftshift">Shift</div>
-        {key("Z")}
-        {key("X")}
-        {key("C")}
-        {key("V")}
-        {key("B")}
-        {key("N")}
-        {key("M")}
+        {keyElement("Z")}
+        {keyElement("X")}
+        {keyElement("C")}
+        {keyElement("V")}
+        {keyElement("B")}
+        {keyElement("N")}
+        {keyElement("M")}
         <div className="key">,</div>
         <div className="key">.</div>
         <div className="key">/</div>
