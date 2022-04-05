@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useIsMounted } from "./useIsMounted";
 
-export const useCountDown = (seconds = 59) => {
+export const useCountdown = (seconds: number = 59): useCountdownType => {
   const [timeLeft, setTimeLeft] = useState<number>(seconds);
   const isMounted = useIsMounted();
 
@@ -9,7 +9,7 @@ export const useCountDown = (seconds = 59) => {
   let intervalCounter = seconds;
   let callback: () => void;
 
-  const startCountDown = () => {
+  const startCountdown = () => {
     setTimeLeft(seconds);
     interval = setInterval(countTime, 1000);
   };
@@ -31,8 +31,14 @@ export const useCountDown = (seconds = 59) => {
   };
 
   return {
-    startCountDown,
+    startCountdown,
     timeLeft,
     onTimerEnds,
   };
 };
+
+interface useCountdownType {
+  startCountdown: () => void;
+  timeLeft: number;
+  onTimerEnds: (callBackFunction: () => void) => void;
+}

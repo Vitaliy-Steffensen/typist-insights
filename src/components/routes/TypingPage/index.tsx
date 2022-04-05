@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import TypeTextDisplay from "./components/TypeTextDisplay";
 import { useGameDataContext } from "../../../context/contexts/GameDataContext/GameDataContext";
-import { useCountDown } from "../../../hooks/useCountDown";
 import "./TypingPage.css";
 import { memo } from "react";
 import TypingInput from "./components/TypingInput";
+import { useCountdown } from "../../../hooks/useCountdown";
 
 const TypingPage: React.FC = () => {
-  const { startCountDown, timeLeft, onTimerEnds } = useCountDown();
+  const { startCountdown, timeLeft, onTimerEnds } = useCountdown(59);
   const { setGameState, currentWord, text } = useGameDataContext();
 
   onTimerEnds(() => setGameState("completed"));
 
   useEffect(() => {
-    startCountDown();
+    startCountdown();
   }, []);
 
   return (
