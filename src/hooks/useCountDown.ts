@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useIsMounted } from "./useIsMounted";
 
+interface useCountdownType {
+  startCountdown: () => void;
+  timeLeft: number;
+  onTimerEnds: (callBackFunction: () => void) => void;
+}
+
 export const useCountdown = (seconds: number = 59): useCountdownType => {
   const [timeLeft, setTimeLeft] = useState<number>(seconds);
   const isMounted = useIsMounted();
@@ -36,9 +42,3 @@ export const useCountdown = (seconds: number = 59): useCountdownType => {
     onTimerEnds,
   };
 };
-
-interface useCountdownType {
-  startCountdown: () => void;
-  timeLeft: number;
-  onTimerEnds: (callBackFunction: () => void) => void;
-}

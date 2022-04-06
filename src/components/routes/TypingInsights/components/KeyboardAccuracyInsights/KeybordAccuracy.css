@@ -10,6 +10,8 @@
 .keyboard-accuracy__range {
   width: 40px;
   background: linear-gradient(hsl(105, 100%, 50%), hsl(0, 100%, 50%));
+  border-radius: 7px;
+  margin: 4px 0;
 }
 .keyboard-accuracy__range-text {
   display: flex;
@@ -31,7 +33,7 @@
   grid-gap: 5px;
 }
 
-.key {
+.keyboard-key {
   color: #c9d1d9;
   background-color: #21262d;
   border: 2px solid #363b42;
@@ -42,47 +44,46 @@
   padding-top: 17px;
 }
 
-.key:hover {
+.keyboard-key:hover {
   border: 1px solid #eeeeee;
 }
 
-.delete {
+.keyboard-key--delete {
   grid-column: span 4;
 }
 
-.tab {
+.keyboard-key--tab {
   grid-column: span 3;
 }
 
-.backslash {
+.keyboard-key--backslash {
   grid-column: span 3;
 }
 
-.capslock {
+.keyboard-key--capslock {
   grid-column: span 4;
 }
 
-.return {
+.keyboard-key--return {
   grid-column: span 4;
 }
 
-.leftshift {
+.keyboard-key--leftshift {
   grid-column: span 5;
 }
 
-.rightshift {
+.keyboard-key--rightshift {
   grid-column: span 5;
 }
 
-.leftctrl {
+.keyboard-key--leftctrl {
   grid-column: span 3;
 }
 
-.command {
+.keyboard-key--command {
   grid-column: span 3;
-  font-size: 14px;
 }
 
-.space {
+.keyboard-key--space {
   grid-column: span 13;
 }

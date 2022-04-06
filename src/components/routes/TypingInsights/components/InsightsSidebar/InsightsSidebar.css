@@ -1,0 +1,9 @@
+.insights-sidebar {
+  width: 300px;
+}
+.insights-sidebar__content {
+  margin: auto 30px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}

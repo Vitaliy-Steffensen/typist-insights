@@ -1,0 +1,12 @@
+.charactor-accuracy-insights {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  margin-bottom: 100px;
+  margin-top: 4vh;
+}
+
+.charactor-accuracy-insights__section-split {
+  width: 3px;
+  background: white;
+}

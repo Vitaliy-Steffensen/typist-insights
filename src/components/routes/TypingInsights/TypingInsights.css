@@ -1,50 +1,9 @@
-.typing-insights__data-container {
-  flex: 1;
-  padding: 150px auto;
-  display: block;
-}
-
-.typing-insights__title-title {
+.typing-insights__header {
   text-align: center;
   color: white;
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: bold;
-}
-
-.typing-insights__title {
-  text-align: center;
-  color: #c9d1d9;
-  font-size: 4rem;
-  font-weight: normal;
-}
-
-.typing-insights__data-section {
-  position: relative;
-  margin: 18vh auto 40vh;
-  max-width: 1300px;
-}
-
-.typing-insights__sidebar {
-  width: 300px;
-}
-
-.typing-insights__sidebar-content {
-  margin: auto 30px;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.typing-insights__line {
-  width: 3px;
-  background: white;
-}
-
-.typing-insights__key-acc {
-  display: flex;
-  justify-content: center;
-  gap: 200px;
-  margin-bottom: 100px;
+  margin: 200px auto 80px;
 }
 
 .typing-insights__restart {
@@ -58,4 +17,5 @@
 
 .typing-insights__restart:hover {
   color: #6e3dff;
+  filter: drop-shadow(1px 1px 7px #7141ff);
 }

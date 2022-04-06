@@ -1,12 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { ENGLISH_WORDS } from "../../../utils/words/english";
-import { defaultWordType } from "../../../utils/words/types";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import Words from "../../../utils/words/Words";
 import { ACTIONS } from "../../actions/gameStatsActions";
 import gameStatsReducer from "../../reducers/gameStatsReducer";
@@ -128,6 +120,10 @@ export const GameDataProvider = ({ children }: any) => {
     });
   };
 
+  const endGame = () => {
+    setGameState("completed");
+  };
+
   const value: GameManagerType = {
     gameState,
     startGame,
@@ -136,7 +132,7 @@ export const GameDataProvider = ({ children }: any) => {
     gameStats,
     currentWord,
     setTypoInCurrentWord,
-    setGameState,
+    endGame,
     addCharactor,
     restart,
     removeCharInCurrentWord,

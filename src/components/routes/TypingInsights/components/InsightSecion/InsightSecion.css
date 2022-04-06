@@ -1,0 +1,15 @@
+.insight-secion__title {
+  text-align: center;
+  color: #c9d1d9;
+  font-size: 4rem;
+  font-weight: normal;
+}
+
+.insight-secion__content {
+  flex: 1;
+  padding: 150px auto;
+  display: block;
+  position: relative;
+  margin: 15vh auto 42vh;
+  max-width: 1300px;
+}

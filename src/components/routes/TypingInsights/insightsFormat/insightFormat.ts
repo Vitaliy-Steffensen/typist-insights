@@ -1,5 +1,11 @@
+import { wordType } from "../../../../context/contexts/GameDataContext/types";
+import { isNumber } from "../../../../utils/utilFunctions";
+import { word } from "./types";
+
 export default class InsightFormat {
-  static charactorAccuracy(charactors: any[]) {
+  static getCharactorAccuracy(charactors: {
+    [key: string]: { correct: number; wrong: number };
+  }) {
     let charsWithAccuracy: any = [];
     let totalAccuracy = 0;
 
@@ -33,7 +39,6 @@ export default class InsightFormat {
       charcactorAccuracy: charcactorAccuracy ? charcactorAccuracy : 0,
       correctChars,
       wrongChars,
-      totalChars: correctChars + wrongChars,
     };
   }
 
@@ -44,11 +49,11 @@ export default class InsightFormat {
   static getTestTitle(wpm: number) {
     switch (true) {
       case wpm < 35:
-        return "Below average";
+        return "You are below average!";
       case 35 <= wpm && wpm < 50:
-        return "You are an average typist";
+        return "You are an average typist!";
       case 50 <= wpm && wpm < 100:
-        return "Abobe average!";
+        return "Yout are Above average!";
       case 100 <= wpm:
         return `You are only ${216 - wpm} wpm awey from the world record!`;
       default:
@@ -70,4 +75,20 @@ export default class InsightFormat {
       ? (floatPercentage - topPercentage) / (1 - topPercentage)
       : 0;
   }
+
+  static getWordAccuracy(correctWords: wordType[], wrongWords: wordType[]) {
+    const wordAccuracy =
+      (correctWords.length / (correctWords.length + wrongWords.length)) * 100;
+    return isNumber(wordAccuracy) ? wordAccuracy : 0;
+  }
+
+  static tableFormatWords = (array: word[], typo: boolean) =>
+    array.map((word: word) => {
+      return {
+        word: word.syntax,
+        typo: typo ? `"${word.typo}"` : "No typo",
+        charactors: word.syntax.length,
+        popularity: `top ${word.popularity}`,
+      };
+    });
 }

@@ -8,7 +8,7 @@ export interface GameManagerType {
   gameStats: any;
   currentWord: CurrentWordType;
   setTypoInCurrentWord: (typo: boolean) => void;
-  setGameState: any;
+  endGame: () => any;
   addCharactor: (charactor: string, typo?: boolean) => void;
   restart: () => void;
   removeCharInCurrentWord: (value: string) => void;

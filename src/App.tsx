@@ -15,6 +15,7 @@ function App() {
         return <TypingPage />;
       case "completed":
         return <TypingInsights />;
+
       default:
         return "404 page doesn't exsist";
     }

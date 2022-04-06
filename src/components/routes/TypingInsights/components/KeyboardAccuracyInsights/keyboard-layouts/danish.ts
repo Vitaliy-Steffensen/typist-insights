@@ -1,6 +1,6 @@
 import { keyboardKeyType } from "./types";
 
-export const ENGLISH_KEYBOARD: keyboardKeyType[] = [
+export const DANISH_KEYBOARD: keyboardKeyType[] = [
   { name: "~" },
   { name: "1" },
   { name: "2" },

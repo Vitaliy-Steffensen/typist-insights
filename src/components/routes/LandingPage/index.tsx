@@ -18,15 +18,15 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
   }, []);
 
   return (
-    <div className="typing-insights" onClick={startGame}>
-      <div className="typing-insights__overlay">
+    <div className="landing-page" onClick={startGame}>
+      <div className="landing-page__overlay">
         <AnimatedLogo />
-        <p className="typing-insights__instructions">
+        <p className="landing-page__instructions">
           <FaMousePointer />
           &nbsp; Click or press any key to start
         </p>
       </div>
-      <p className="typing-insights__typing-text">{BACKGROUND_TEXT}</p>
+      <p className="landing-page__typing-text">{BACKGROUND_TEXT}</p>
     </div>
   );
 };

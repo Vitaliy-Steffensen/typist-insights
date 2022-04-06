@@ -7,10 +7,10 @@ import TypingInput from "./components/TypingInput";
 import { useCountdown } from "../../../hooks/useCountdown";
 
 const TypingPage: React.FC = () => {
-  const { startCountdown, timeLeft, onTimerEnds } = useCountdown(59);
-  const { setGameState, currentWord, text } = useGameDataContext();
+  const { startCountdown, timeLeft, onTimerEnds } = useCountdown();
+  const { endGame, currentWord, text } = useGameDataContext();
 
-  onTimerEnds(() => setGameState("completed"));
+  onTimerEnds(() => endGame());
 
   useEffect(() => {
     startCountdown();

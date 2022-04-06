@@ -19,19 +19,13 @@
   border: 3px solid #21262d;
 }
 
-table {
+.table__container {
   width: 100%;
   background-color: #21262d;
   table-layout: fixed;
 }
 
-.table-container {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-}
-
-thead th {
+.table__heading {
   background-color: #151c22;
   color: #58a6ff;
   text-align: center;
@@ -42,7 +36,7 @@ thead th {
   top: 0;
 }
 
-tbody td {
+.table__data {
   color: #c9d1d9;
   text-align: center;
   padding: 25px;
@@ -51,10 +45,4 @@ tbody td {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #21262d;
-}
-
-.filters-container {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
 }

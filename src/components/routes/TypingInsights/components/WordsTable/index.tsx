@@ -1,54 +1,30 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
+import { isNumber } from "../../../../../utils/utilFunctions";
 import { Table } from "../../../../shared/Table";
+import InsightFormat from "../../insightsFormat/insightFormat";
+import { InsightSecion } from "../InsightSecion";
+import { tableFormattedWord } from "./types";
 
-interface indexProps {}
-
-type word = {
-  syntax: string;
-  popularity: number;
-  typo?: string;
-};
-
-type formattedWord = {
-  word: string;
-  popularity?: string;
-  charactors: number;
-  typo?: string;
-};
-
-export const WordsTable: React.FC<indexProps> = ({}) => {
+export const WordsTable: React.FC = () => {
   const { gameStats } = useGameDataContext();
+  const { correctWords, wrongWords } = gameStats;
 
-  const addTypos = (array: word[], typo: boolean) =>
-    array.map((word: word) => {
-      return {
-        word: word.syntax,
-        typo: typo ? word.typo : "No typo",
-        charactors: word.syntax.length,
-        popularity: `top ${word.popularity}`,
-      };
-    });
-
+  const { tableFormatWords } = InsightFormat;
   const [unsortedWords] = useState([
-    ...addTypos(gameStats.wrongWords, true),
-    ...addTypos(gameStats.correctWords, false),
+    ...tableFormatWords(gameStats.wrongWords, true),
+    ...tableFormatWords(gameStats.correctWords, false),
   ]);
-  const [sortedWords, setSortedWords] =
-    useState<formattedWord[]>(unsortedWords);
   const [sorting, setSorting] = useState<string>("");
-
-  if (gameStats.wrongWords.length + gameStats.correctWords.length === 0)
-    return <h1>No words</h1>;
-
-  const headers: string[] = Object.keys(unsortedWords[0]);
+  const [sortedWords, setSortedWords] =
+    useState<tableFormattedWord[]>(unsortedWords);
 
   const sort = (column: string) => {
     if (column === sorting) {
       setSorting("");
       setSortedWords([
-        ...addTypos(gameStats.wrongWords, true),
-        ...addTypos(gameStats.correctWords, false),
+        ...tableFormatWords(gameStats.wrongWords, true),
+        ...tableFormatWords(gameStats.correctWords, false),
       ]);
       return;
     }
@@ -56,8 +32,7 @@ export const WordsTable: React.FC<indexProps> = ({}) => {
     setSorting(column);
     setSortedWords(() =>
       unsortedWords.sort((a: any, b: any) => {
-        //isNumber
-        if (!isNaN(parseInt(a[column])) && !isNaN(parseInt(b[column])))
+        if (isNumber(a[column]) && isNumber(b[column]))
           return a[column] - b[column];
 
         return a[column].toString().localeCompare(b[column].toString());
@@ -65,14 +40,23 @@ export const WordsTable: React.FC<indexProps> = ({}) => {
     );
   };
 
+  if (correctWords.length + wrongWords.length === 0)
+    return (
+      <InsightSecion title="No words encountered">
+        <></>
+      </InsightSecion>
+    );
+
+  const headers: string[] = Object.keys(unsortedWords[0]);
+
   return (
-    <div style={{ marginBottom: 100 }}>
+    <InsightSecion title="words encountered">
       <Table
         headers={headers}
         data={sortedWords}
         sorting={sorting}
         sort={sort}
       />
-    </div>
+    </InsightSecion>
   );
 };

@@ -1,8 +1,8 @@
-.typing-insights {
+.landing-page {
   position: relative;
 }
 
-.typing-insights__overlay {
+.landing-page__overlay {
   cursor: pointer;
   position: absolute;
   height: 100vh;
@@ -12,7 +12,7 @@
   backdrop-filter: blur(5px);
 }
 
-.typing-insights__instructions {
+.landing-page__instructions {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,9 +21,9 @@
   font-size: 1.25rem;
 }
 
-.typing-insights__typing-text {
+.landing-page__typing-text {
   position: absolute;
-  top: 40%;
+  top: 40vh;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
