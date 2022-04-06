@@ -15,7 +15,7 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
     return () => {
       document.removeEventListener("keyup", startGame);
     };
-  }, []);
+  }, [startGame]);
 
   return (
     <div className="landing-page" onClick={startGame}>
