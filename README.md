@@ -16,11 +16,19 @@ The open source development started the 27th of march 2022. Current contributers
 # Navigate
 
 - [Documentation](#Documentation)
+  - [Perfomance](##Perfomance)
   - [Testing](##Testing)
 
 <br/><br/><br/>
 
 # Documentation
+
+## Perfomance
+
+In order with to conditionally render the ui based on a vast amount of fast pace userinputs, and keeping a smooth and optimized experience we need to use the concept of dynamic programming. This includes the usage of:
+- Memoization, with purecomponent, `memo` & the `useMemo()`/`useCallback` hooks --> to prevent unnecessary re-renders.
+- Keeping components state local where necessary
+- Code-splitting using dynamic import
 
 ## Testing
 
