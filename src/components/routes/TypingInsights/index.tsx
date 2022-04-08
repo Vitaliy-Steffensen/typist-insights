@@ -9,8 +9,9 @@ import { VscDebugRestart } from "react-icons/vsc";
 import { InsightsSidebar } from "./components/InsightsSidebar";
 import { CharactorAccuracyInsights } from "./components/CharactorAccuracyInsights";
 import { ScrollIndicator } from "../../shared/ScrollIndicator";
+import { useScrollPosition } from "../../../hooks/useScrollPosition";
 
-export const TypingInsights: React.FC = () => {
+const TypingInsights: React.FC = () => {
   const { gameStats, restart } = useGameDataContext();
   const { getWordAccuracy, getTestTitle } = InsightFormat;
   const { correctWords, wrongWords } = gameStats;
@@ -20,15 +21,28 @@ export const TypingInsights: React.FC = () => {
   const { charsWithAccuracy, charcactorAccuracy, correctChars, wrongChars } =
     InsightFormat.getCharactorAccuracy(gameStats.charactors);
 
+  const scrollPosition = useScrollPosition();
+
+  const inVisibleArea = scrollPosition > 600;
+
+  const fadeStyle = {
+    opacity: inVisibleArea ? scrollPosition / 1080 : 0,
+    animation: scrollPosition === 0 ? "updown 3s ease infinite" : "none",
+  };
+
   return (
-    <div className="typing-insights">
-      <VscDebugRestart className="typing-insights__restart" onClick={restart} />
+    <div className="typing-insights" id="insights">
+      <VscDebugRestart
+        className="typing-insights__restart"
+        style={fadeStyle}
+        onClick={restart}
+      />
       <InsightsSidebar
         wpm={wpm}
         cpm={correctChars}
         wordAccuracy={wordAccuracy}
       />
-      <ScrollIndicator />
+      {/* <ScrollIndicator /> */}
 
       <>
         <h1 className="typing-insights__header">{getTestTitle(wpm)}</h1>
@@ -45,3 +59,5 @@ export const TypingInsights: React.FC = () => {
     </div>
   );
 };
+
+export default TypingInsights;

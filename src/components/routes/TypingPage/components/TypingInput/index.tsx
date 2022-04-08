@@ -1,7 +1,6 @@
 import React, { useState, memo } from "react";
 import { useGameDataContext } from "../../../../../context/contexts/GameDataContext/GameDataContext";
 import {
-  CurrentWordType,
   GameManagerType,
 } from "../../../../../context/contexts/GameDataContext/types";
 

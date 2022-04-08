@@ -7,6 +7,7 @@ import "./TypeTextDisplay.css";
 const TypeTextDisplay: React.FC<TypeTextDisplayProps> = ({
   currentWord,
   text,
+  isCompleted,
 }) => {
   const memoizedLines = useMemo(
     () => getLinesData(currentWord, text),
@@ -14,7 +15,7 @@ const TypeTextDisplay: React.FC<TypeTextDisplayProps> = ({
   );
 
   const wordClasses = (word: wordType, iscurrentWord: boolean) => {
-    return iscurrentWord
+    return iscurrentWord && !isCompleted
       ? `type-text-display__text type-text-display__text--current ${
           currentWord.typo ? "type-text-display__text--current-typo" : ""
         }`

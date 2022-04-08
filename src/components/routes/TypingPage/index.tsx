@@ -5,10 +5,11 @@ import "./TypingPage.css";
 import { memo } from "react";
 import TypingInput from "./components/TypingInput";
 import { useCountdown } from "../../../hooks/useCountdown";
+import { VscDebugRestart } from "react-icons/vsc";
 
 const TypingPage: React.FC = () => {
   const { startCountdown, timeLeft, onTimerEnds } = useCountdown();
-  const { endGame, currentWord, text } = useGameDataContext();
+  const { endGame, currentWord, text, restart } = useGameDataContext();
 
   onTimerEnds(() => endGame());
 
@@ -16,11 +17,26 @@ const TypingPage: React.FC = () => {
     startCountdown();
   }, []);
 
+  const isNotCompleted = timeLeft > 0;
+
   return (
     <div className="typing-page">
-      <h1 className="typing-page__timer">{timeLeft}</h1>
-      <TypeTextDisplay currentWord={currentWord} text={text} />
-      <TypingInput />
+      <h1
+        className="typing-page__timer"
+        style={{ color: isNotCompleted ? "#5f2ef5" : "#c9d1d9" }}
+      >
+        {isNotCompleted ? timeLeft : "Completed"}
+      </h1>
+      <TypeTextDisplay
+        currentWord={currentWord}
+        text={text}
+        isCompleted={!isNotCompleted}
+      />
+      {isNotCompleted ? (
+        <TypingInput />
+      ) : (
+        <VscDebugRestart className="typing-page__restart" onClick={restart} />
+      )}
     </div>
   );
 };

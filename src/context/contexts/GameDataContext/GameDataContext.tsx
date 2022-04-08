@@ -120,9 +120,24 @@ export const GameDataProvider = ({ children }: any) => {
     });
   };
 
+  // const [completionCallback, setCompletionCallback] =
+  //   useState<() => void | undefined>();
+
   const endGame = () => {
+    // setCompleionCallback(callback);
     setGameState("completed");
+    setTimeout(() => {
+      const insightsPosition = document
+        .getElementById("insights")
+        ?.getBoundingClientRect().top;
+      insightsPosition && window.scrollTo(0, insightsPosition);
+    }, 500);
   };
+
+  // useEffect(() => {
+  //   gameState === "completed" &&
+  //     console.log(document.getElementById("insights"));
+  // }, [gameState]);
 
   const value: GameManagerType = {
     gameState,

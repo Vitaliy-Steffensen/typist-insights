@@ -1,26 +1,31 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useGameDataContext } from "./context/contexts/GameDataContext/GameDataContext";
-import TypingPage from "./components/routes/TypingPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/routes/LandingPage";
-import { TypingInsights } from "./components/routes/TypingInsights";
+import TypingInsights from "./components/routes/TypingInsights";
+
+const TypingPage = lazy(() => import("./components/routes/TypingPage"));
 
 function App() {
   const { gameState } = useGameDataContext();
 
-  const content = () => {
-    switch (gameState) {
-      case "readyToPlay":
-        return <LandingPage />;
-      case "initiated":
-        return <TypingPage />;
-      case "completed":
-        return <TypingInsights />;
-
-      default:
-        return "404 page doesn't exsist";
-    }
-  };
-
-  return <>{content()}</>;
+  return (
+    <Suspense fallback={<div className="loader" />}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {gameState === "readyToPlay" && <LandingPage />}
+                {gameState !== "readyToPlay" && <TypingPage />}
+                {gameState === "completed" && <TypingInsights />}
+              </>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
+  );
 }
 export default App;

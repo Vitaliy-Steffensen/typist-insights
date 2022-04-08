@@ -7,6 +7,7 @@ import {
 export interface TypeTextDisplayProps {
   text: textType;
   currentWord: CurrentWordType;
+  isCompleted: boolean;
 }
 
 export type LineType = wordType[];

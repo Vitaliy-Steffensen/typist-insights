@@ -7,7 +7,7 @@ interface useCountdownType {
   onTimerEnds: (callBackFunction: () => void) => void;
 }
 
-export const useCountdown = (seconds: number = 59): useCountdownType => {
+export const useCountdown = (seconds: number = 10): useCountdownType => {
   const [timeLeft, setTimeLeft] = useState<number>(seconds);
   const isMounted = useIsMounted();
 
